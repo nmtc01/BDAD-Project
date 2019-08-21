@@ -1,0 +1,8 @@
+.mode	columns
+.headers	on
+.nullvalue	NULL
+
+SELECT NOME, max(SUMA)
+FROM (SELECT PRODUTO.nome AS NOME, sum(VENDA_PRODUTO.quantidade) AS SUMA
+	FROM VENDA_PRODUTO NATURAL JOIN PRODUTO
+	GROUP BY VENDA_PRODUTO.idProduto);
